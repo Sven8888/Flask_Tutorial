@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {# Extends the base template #}
+
+{% import 'macros.html' as macros %} {# Imports macros from macros.html #}
+
+{% block title %} {# Defines a block named "title" #}
+
+{#  This will bring the title from the base template  #}
+    {{ super() }} {# Calls the parent block content #}
+
+
+    a new way of exploring {# Additional title content #}
+
+{% endblock %} 
+
+{% block content %}
+<ul>
+    {% for item in items %} {# Loops through each item in the "items" list #}
+        {{ macros.render_items(item) }} {# Renders each item using the render_items macro #}
+    {% endfor %} {# Ends the for loop #}
+</ul>
+{% endblock %}
