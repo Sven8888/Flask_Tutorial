@@ -1,12 +1,21 @@
+
 from flask import Flask, render_template
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
+
 
 # Sample data (replace this with your actual data)
 items = [
     "Dream City", "Wanderlust Valley", "Fantasy Isle", "Mystic Woods",
     "Whispering Falls", "Eternal Springs"
 ]
+
+
+@app.errorhandler(404)
+def endpoint_not_found(e):
+  return render_template('404.html', error=e), 404
 
 
 @app.route("/")
@@ -25,7 +34,6 @@ def home():
 #return response
 
 #user_ip_get= request.cookies.get("user_ip")
-
 
 app.run(host='0.0.0.0', port=5000, debug=True)
 #if __name__ == '__main__':
